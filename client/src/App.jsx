@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-
+import Chatbot from "./components/chatbot";
 import AuthLayout from "./components/auth/layout";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
@@ -98,6 +98,8 @@ function App() {
         <Route path="/unauth-page" element={<UnauthPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Chatbot />
     </div>
   );
 }

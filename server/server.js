@@ -3,8 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-// For OAuth
-
 
 // Routers
 const authRouter = require("./routes/auth/auth-routes");
@@ -21,6 +19,8 @@ const shopSearchRouter = require("./routes/shop/search-routes");
 const shopReviewRouter = require("./routes/shop/review-routes");
 const commonFeatureRouter = require("./routes/common/feature-routes");
 
+const chatBotRouter = require("./routes/chatbot/chatbot-routes");
+
 // const authRouter = require("./routes/auth/auth-routes");
 
 // mongoose
@@ -30,9 +30,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 //   .then(() => console.log(`Mongodb connected `))
 //   .catch((err) => console.log(`Error`, err));
 mongoose
-  .connect(
-    process.env.MONGODB_URL
-  )
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log(`Mongodb connected `))
   .catch((err) => console.log(`Error`, err));
 
@@ -55,7 +53,6 @@ app.use(
   })
 );
 
-
 // Passport middleware
 // app.use(passport.initialize());
 // app.use(passport.session());
@@ -76,4 +73,5 @@ app.use("/api/shop/payfast", payfastRouter);
 app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 app.use("/api/common/feature", commonFeatureRouter);
+app.use("/api/chatbot", chatBotRouter);
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
